@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{post.title}}</h1>
+<small>By : {{post.author.first_name}}
+    {{post.author.last_name}}
+    <hr>
+    <br/>
+</small>
+{{post.body}}
+
+<br/><br/>
+<a href="{%url 'home'%}" class="btn btn-secondary">Back</a> 
+<a href="{%url 'blog-update' post.pk %}" class="btn btn-success">Update Post</a> 
+<a href="{%url 'blog-delete' post.pk %}" class="btn btn-danger">Delete Post</a>
+
+
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DeletePost">
+  Delete Post Modal
+</button>-->
+
+<!-- Modal 
+<div class="modal modal-danger fade" id="DeletePost" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">    
+        <h5 class="modal-title" id="DeletePost">Confirm Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <p> Are You Sure ? </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+{% endblock %}
