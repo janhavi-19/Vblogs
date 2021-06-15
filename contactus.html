@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<!DOCTYPE html>
+<html lang="en">        
+   <section id="contactus" class="bg-light py-5">
+     <div class="container">
+       <div class="row">
+         <div class="col-25">
+           <div class="google-maps mb-100">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8316.24325914725!2d72.86740890267374!3d19.018853818276664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf2332dc11c1%3A0x5c0f30210b1dab90!2sVIT!5e0!3m2!1sen!2sin!4v1617816137451!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div> 
+         <div class="col-md-5 mx-auto">
+           <div class="card">
+             <div class="card-header bg-primary text-white">
+              <h4> <i class="fa fa-id-card"></i> Contact US</h4>
+             </div>
+            <div class="card-body">
+              <!--Alerts-->
+              <!--{% include '_alerts.html' %}-->
+              <form action="{% url 'contact_us' %}" method="POST">
+                  {% csrf_token %}
+                  <div class="form-group">
+                  <label for="first_name">First Name</label>
+                  <input type="text" name="first_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="last_name">Last Name</label>
+                  <input type="text" name="last_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="review">Review</label>
+                  <textarea name="review" class="form-control" required></textarea>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-success btn-block">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </section>
+  <script src="assets/js/jquery-3.3.1.min.js "></script>
+  <script src="assets/js/bootstrap.bundle.min.js "></script>
+  <script src="assets/js/main.js "></script>
+</body>
+
+</html>
+{%endblock%}

@@ -1,0 +1,67 @@
+.footer {
+    background-color:darkgray;
+    margin: 0px auto;
+    padding: 20px 0px;
+    /* position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; */
+  }
+
+  .welcome {
+    margin-top: 25px ;
+    background-image: url('../images/intro-1.jpeg');
+    background-size: cover;
+  }
+  
+  #notification-jumbotron {
+    background-image: url('../images/confetti2.jpg');
+  }
+  .badge-pill{
+      border: 2px solid darkgray;
+      margin: 5px;
+      font-size: 15px;
+      background-color: lightgray;
+  }  
+  
+  .carousel {
+    padding-top: 0px;
+  }
+  .carousel .carousel-item {
+    height: 300px;
+    padding-top: 0px;
+  }
+  .carousel .carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* min-height: 300px; */
+  }
+  #carouselButton {
+    right: 0px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 1;
+  }
+  
+  .category-links {
+    text-decoration: none;
+    color: black
+  }
+
+  .category-links:hover {
+    text-decoration: none;
+    background-color: darkgray;
+  }
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+  @media only screen and (max-width: 576px) {
+    .carousel-caption h2 {
+            font-size: 1rem;
+    }
+ }
+
+

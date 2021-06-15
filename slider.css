@@ -1,0 +1,115 @@
+.carousel {
+
+    height: 250px;
+  
+    width: 100%;
+  
+    position: relative;
+  
+  }
+  
+  .carousel .switchLeft,
+  
+  .carousel .switchRight {
+  
+    color: white;
+  
+    font-weight: bold;
+  
+    height: 100%;
+  
+    width: 45px;
+  
+    line-height: 250px;
+  
+    font-size: 25px;
+  
+    text-align: center;
+  
+    font-family: sans-serif;
+  
+    top: 0;
+  
+    z-index: 3;
+  
+  }
+  
+  
+  
+  .carousel .switchLeft {
+  
+    position: absolute;
+  
+    left: -50px;
+  
+  }
+  
+  
+  
+  .carousel .switchRight {
+  
+    position: absolute;
+  
+    right: -50px;
+  
+  }
+  
+  
+  
+  .carouselbox {
+  
+    height: 250px;
+  
+    width: auto;
+  
+    overflow: hidden;
+  
+    white-space: nowrap;
+  
+    display: inline-block;
+  
+    text-align: center;
+  
+    padding-bottom: 10px !important;
+  
+    display: flex;
+  
+    align-items: center;
+  
+  }
+  
+  
+  
+  .carouselbox img {
+  
+    min-width: 147px;
+  
+    max-width: 147px;
+  
+    height: 200px;
+  
+    background-size: cover;
+  
+    background-color: rgb(190, 224, 240);
+  
+    margin: 5px 10px;
+  
+    cursor: pointer;
+  
+    transition: 0.5s ease;
+  
+    z-index: 2;
+  
+  }
+  
+  
+  
+  .carouselbox img:hover {
+  
+    transform: scale(1.4);
+  
+    z-index: 5;
+  
+  }
+  
+  

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Update Post</h1>
+{{ form.non_form_errors }} 
+{% if user.is_authenticated %}
+<form method="POST" enctype="multipart/form-data">
+        <br></br>
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-danger alert-dismissible col-12 mx-1" role="alert">
+                <div id="form_errors">
+                {% for key, value in form.errors.items %}
+                    <span class="fieldWrapper">
+                        {{ key }}:{{ value }}
+                    </span>
+                {% endfor %}
+                </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        {% for field in form %}
+            {% if field.label == 'Body' %}
+                <div class="form-group">
+                    <label>
+                    <b> {{ field.label }} : </b>
+                    </label>
+                    <div class="row">
+                        <div class="col-12">
+                            {{ field }}
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                {% if field.label == 'Categories' %}
+                    <div class="form-group mb-3">
+                                <label>
+                                    <b> {{ field.label }} : </b>
+                                </label> <br/>   
+                            {% for item in field %}
+                            <div class="col-xs-2 col-sm-3 col-md-2 ml-1" style="display: inline-block;">
+                                {{ item }}
+                            </div>
+                            {% endfor %}
+                    </div>
+                    {% else %}
+                        {% if field.label == 'Author' %}
+                            <div class="form-group mb-3">
+                                <label style = "display: none;">
+                                <b> {{ field.label }} : </b>
+                                </label>
+                                    {{ field }}
+                            </div>
+                        {% else %}
+                            <div class="form-group mb-3">
+                                <label>
+                                <b> {{ field.label }} : </b>
+                                </label>
+                                    {{ field }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+            {% endif %}
+        {% endfor %}
+        <div class="col-xs-12">
+            {{ form.media }}
+        </div>
+        <!-- {{ form.as_p }} .as_p means individual fields will be created using p (para) tag -->
+        <button class="btn btn-secondary">Update Post</button>
+</form>
+
+<!-- To not allow a user to select other users as author -->
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        var name_id = "{{ user.id }}";
+        document.getElementById("correct_user").value = name_id;
+        var categories = document.getElementsByName("Categories");
+        let test = "{{post.Categories}}"
+        test = test.replace(new RegExp("&"+"#"+"x27;", "g"), "'")
+        for (let i = 0; i < categories.length; i++) {
+            var id = categories[i].id;
+            // console.log(document.getElementById(id).value)
+            if(test.includes(document.getElementById(id).value)){
+                document.getElementById(id).checked = true;
+            }
+        }
+    });
+</script>  
+
+{% else %}
+    <h1>You are not Allowed to create Post!!!!</h1>
+{% endif %}
+<br/>
+
+
+{% endblock %}
+

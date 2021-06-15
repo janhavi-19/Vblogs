@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Add Comment</h1>
+    <div class='from-group'>
+        <form method="POST" >
+            <br></br>
+           {% csrf_token %}
+           {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible col-12 mx-1" role="alert">
+                    <div id="form_errors">
+                    {% for key, value in form.errors.items %}
+                        <span class="fieldWrapper">
+                            {{ key }}:{{ value }}
+                        </span>
+                    {% endfor %}
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            {{ form.as_p }}
+            <button class="btn btn-success" id='submit-btn'>Add Comment</button>
+        </form>
+    </div>
+
+
+
+
+
+<br/>
+
+<!--To not allow a user to select other users as author -->
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+    var name_id = "{{ user.first_name }} {{user.last_name}}";
+    document.getElementById("id_name").value = name_id;
+    document.getElementById("id_name").disabled = true;
+
+    document.getElementById("submit-btn").addEventListener('click', () => {
+        document.getElementById("id_name").disabled = false;
+    });
+    });
+</script> 
+
+
+
+{% endblock %}

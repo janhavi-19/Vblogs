@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{{ form.non_form_errors }} 
+
+  <h1>Add Thoughts</h1>
+    <div class='from-group'>
+        <form method="POST" >
+            <br></br>
+           {% csrf_token %}
+             {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible col-12 mx-1" role="alert">
+                   <div id="form_errors">
+                      {% for key, value in form.errors.items %}
+                          <span class="fieldWrapper">
+                              {{ key }}:{{ value }}
+                            </span>
+                     {% endfor %}
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+               </div>
+              {% endif %}
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button class="btn btn-warning">Message</button>
+        </form>
+    </div>
+<br/>
+ <!--To not allow a user to select other users as author -->
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        var name_id = "{{ user.id }}";
+        document.getElementById("correct_user").value = name_id;
+    });
+</script> 
+
+{% endblock %}
+
+
+
